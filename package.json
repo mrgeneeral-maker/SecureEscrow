@@ -1,0 +1,53 @@
+{
+  "name": "smart-contract-escrow",
+  "version": "1.0.0",
+  "description": "Naira-denominated smart contract escrow settled in ETH",
+  "license": "MIT",
+  "private": true,
+  "engines": {
+    "node": ">=18.18.0"
+  },
+  "scripts": {
+    "compile": "hardhat compile",
+    "clean": "hardhat clean",
+    "test": "hardhat test",
+    "test:unit": "hardhat test test/unit/*.test.ts",
+    "test:security": "hardhat test test/security/*.test.ts",
+    "test:integration": "hardhat test test/integration/*.test.ts",
+    "test:gas": "cross-env REPORT_GAS=true hardhat test",
+    "coverage": "hardhat coverage",
+    "benchmark:gas": "hardhat run scripts/benchmark/gas-benchmark.ts",
+    "lint": "solhint \"contracts/**/*.sol\"",
+    "format": "prettier --write \"**/*.{sol,ts,json,md}\"",
+    "format:check": "prettier --check \"**/*.{sol,ts,json,md}\"",
+    "node": "hardhat node",
+    "deploy:local": "hardhat run scripts/deploy.ts --network localhost",
+    "deploy:base-sepolia": "hardhat run scripts/deploy.ts --network baseSepolia",
+    "deploy:base": "hardhat run scripts/deploy.ts --network base",
+    "verify:base-sepolia": "hardhat run scripts/verify.ts --network baseSepolia",
+    "verify:base": "hardhat run scripts/verify.ts --network base",
+    "export:frontend": "ts-node scripts/export-frontend.ts",
+    "frontend:install": "npm --prefix frontend install",
+    "frontend:dev": "npm --prefix frontend run dev",
+    "frontend:build": "npm --prefix frontend run build",
+    "setup": "npm install && npm run frontend:install",
+    "dev": "npm run frontend:dev",
+    "rate:update": "hardhat run scripts/update-rate.ts --network baseSepolia",
+    "rate:watch": "cross-env RATE_INTERVAL_SECONDS=300 hardhat run scripts/update-rate.ts --network baseSepolia"
+  },
+  "dependencies": {
+    "@openzeppelin/contracts": "4.9.6"
+  },
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox": "^5.0.0",
+    "@types/node": "^20.11.0",
+    "cross-env": "^7.0.3",
+    "dotenv": "^16.4.5",
+    "hardhat": "^2.22.0",
+    "prettier": "^3.2.5",
+    "prettier-plugin-solidity": "^1.3.1",
+    "solhint": "^5.0.1",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.4.0"
+  }
+}

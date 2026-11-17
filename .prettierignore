@@ -1,0 +1,11 @@
+node_modules
+artifacts
+cache
+typechain-types
+coverage
+deployments
+reports
+package-lock.json
+frontend/node_modules
+frontend/dist
+frontend/src/contracts/deployments.json
